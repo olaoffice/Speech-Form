@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon_io/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon_io/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon_io/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon_io/android-chrome-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/favicon_io/android-chrome-512x512.png" sizes="512x512" />
+    <title>Speech Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="text">
+            Connexion
+        </div>
+        <form action="#">
+            <div class="field">
+                <input type="text" required>
+                <span class="fas fa-user"></span>
+                <label for="">Email ou Nom<sup>*</sup></label>
+            </div>
+            <div class="field">
+                <input type="password" required>
+                <span class="fas fa-lock"></span>
+                <label for="">Mot de passe<sup>*</sup></label>
+            </div>
+            <div class="forgot-pass">
+                <a href="#">Mot de passe oublié?</a href="#">
+            </div>
+            <button>Se connectez</button>
+            <div class="sign-up">Pas de compte?
+                <a href="#">S'inscrire maintenant</a>
+            </div>
+        </form>
+    </div>
+<!-- <div class="vh-100">
+    <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-body">
+                <h2 className="card-title text-center mb-4">Welcome to TaskList Pro</h2>
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">Enter your email address to get started</label>
+                  <input type="email" className="form-control" id="email" placeholder="name@yourcompany.com" />
+                </div>
+                <button type="submit" className="btn btn-primary btn-block mb-3">Continue with Email</button>
+                <div className="text-center mb-3">OR</div>
+                <button type="button" className="btn btn-light btn-block mb-3">Continue with Google</button>
+                <button type="button" className="btn btn-dark btn-block mb-3">Continue with Apple</button>
+                <div className="text-center">
+                  <a href="#" className="text-decoration-none">Already have an account? Sign In</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div> -->
+
+    <script type="module">
+        const text = document.querySelector('input[type="text"]')
+        const btn = document.querySelector('button')
+        const pass = document.querySelector('input[type="password"]')
+        console.log('pass :>> ', pass);
+        const ignored = ['@','gmail',',','.com','.bj','.fr','.be','.org','.net','/',':','!']
+
+        btn.addEventListener('click', (e) => {
+            // e.preventDefault()
+            let val = text.value
+            ignored.forEach(ignore => 
+               val = val.replaceAll(ignore,''))
+
+            val = val.trim() !== '' ? val : null
+            
+            let wpass = pass.value
+            wpass = wpass.replaceAll(' ','')
+            wpass = wpass.trim() !== '' ? true : null
+
+            const utterance = new SpeechSynthesisUtterance(
+                val !== null && wpass !== null ? 
+                    `Hello ${val}, Veuillez patienter un instant` 
+                : val !== null && wpass === null ? 
+                    'Veuillez renseigner votre mot de passe' 
+                : val === null && wpass !== null ? 
+                    'Veuillez renseigner votre adresse' 
+                : 'Veuillez renseigner votre adresse et mot de passe'
+            )
+
+            window.speechSynthesis.speak(utterance)
+        })
+    </script>
+</body>
+
+</html>

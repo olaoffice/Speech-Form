@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    background-color: #dde1e7;
+    text-align: center;
+}
+
+.content {
+    width: 330px;
+    background-color: #dde1e7;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.451),
+        2px 2px 5px rgba(94, 104, 121, 0.288)
+}
+
+.content .text {
+    font-size: 33px;
+    font-weight: 600;
+    margin-bottom: 35px;
+    color: #595959;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.content .text:hover {
+    animation: anime 3s ease-out infinite alternate-reverse;
+}
+
+.content .text::selection {
+    background-color: #595959;
+    color: #dde1e7;
+}
+
+.field {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.field:nth-child(2) {
+    margin-top: 30px;
+}
+
+.field input {
+    height: 100%;
+    width: 100%;
+    padding-left: 45px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    background-color: #dde1e7;
+    color: #595959;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px #f4f5f7 inset,
+        -5px -5px 10px rgba(94, 104, 121, 0.288) inset;
+    transition: box-shadow .10s ease-in-out;
+}
+
+.field input:focus {
+    box-shadow: 1px 1px 2px #f4f5f7 inset,
+        -1px -1px 2px rgba(94, 104, 121, 0.288) inset;
+}
+
+.field span {
+    position: absolute;
+    color: #595959;
+    width: 50px;
+    line-height: 50px;
+}
+
+.field label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 45px;
+    pointer-events: none;
+    color: #595959;
+}
+
+.field input:valid~label {
+    opacity: 0;
+}
+
+.field sup{
+    font-size: 14px;
+    color: red;
+    font-weight: 300;
+}
+
+.forgot-pass {
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: start;
+}
+
+.forgot-pass a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.forgot-pass a:hover {
+    text-decoration: underline;
+}
+
+button {
+    margin: 13px 0;
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    line-height: 50px;
+    font-weight: 600;
+    background-color: #dde1e7;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #595959;
+    box-shadow: 2px 2px 5px #f4f5f7,
+        -5px -5px 10px rgba(94, 104, 121, 0.288);
+}
+
+button:focus {
+    color: #3498db;
+    box-shadow: 2px 2px 5px #f4f5f7 inset,
+        -5px -5px 10px rgba(94, 104, 121, 0.288) inset;
+}
+
+.sign-up {
+    margin: 10px 0;
+    color: #595959;
+    font-size: 16px;
+}
+
+.sign-up a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.sign-up a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    animation: load 5s linear;
+}
+
+@keyframes anime {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes load {
+    from {
+        cursor: wait;
+    }
+
+    to {
+        cursor: wait;
+    }
+}
